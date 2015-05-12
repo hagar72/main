@@ -1,5 +1,11 @@
 {% extends "MainAbstractBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/mainabstract/css/slick.css') }}" media="all" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/mainabstract/css/animate.css') }}" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block container %}
 <div class="container">
     <div class="chairman clearfix">

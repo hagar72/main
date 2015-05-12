@@ -22,7 +22,7 @@ class DefaultController extends Controller
      * @Template()
      */
     public function aboutAction() {
-        
+        return array();
     }
     
     /**
@@ -30,7 +30,7 @@ class DefaultController extends Controller
      * @Template()
      */
     public function certificatesAction() {
-        
+        return array();
     }
     
     /**
@@ -38,7 +38,7 @@ class DefaultController extends Controller
      * @Template()
      */
     public function projectsAction() {
-        
+        return array();
     }
     
     /**
@@ -46,6 +46,6 @@ class DefaultController extends Controller
      * @Template()
      */
     public function contactUsAction() {
-        
+        return array();
     }
 }

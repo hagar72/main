@@ -1,45 +1,31 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Menu list</h1>
-
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Link</th>
-                <th>Alias</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('menu_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.title }}</td>
-                <td>{{ entity.link }}</td>
-                <td>{{ entity.alias }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('menu_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('menu_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
+<header>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="mainNav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="index.html">
+                    <img src="{{ asset('bundles/mainabstract/img/logo.png') }}" alt="logo" class="img-responsive">
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    {% if app.request.attributes.get('_route') == '' %}
+                        {% set currentPath = 'home' %}
+                    {% else %}
+                        {% set currentPath = path(app.request.attributes.get('_route')) %}
+                    {% endif %}
+                    
+                    {% set itemClass = '' %}
+                    {% for entity in entities %}
+                        {% if entity.link == 'contact_us' %}
+                            {% set itemClass = 'contact' %}
+                        {% endif %}
+                        <li class="{{ itemClass}}"><a href="{{ path(entity.link) }}" class="{% if currentPath == entity.link %}active{%endif%}">{{ entity.title }}</a></li>
+                    {% endfor %}
+                    <li class="ar-lang"><a class="pull-right" href="index-ar.html">العربية</a></li>
                 </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('menu_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+            </div>
+            <!--/.nav-collapse --> 
+        </div>
+    </div>
+</header>

@@ -1,0 +1,21 @@
+main_abstract:
+    resource: "@MainAbstractBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+main_article:
+    resource: "@MainArticleBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+main_user:
+    resource: "@MainUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,10 @@
+vendor
+
+nbproject
+
+app/config/parameters.yml
+
+app/cache
+app/logs
+
+composer.lock

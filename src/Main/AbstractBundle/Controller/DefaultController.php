@@ -14,6 +14,38 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array('name' => 'Homepage');
+        return array();
+    }
+    
+    /**
+     * @Route("/about", name="about")
+     * @Template()
+     */
+    public function aboutAction() {
+        
+    }
+    
+    /**
+     * @Route("/certificates", name="certificates")
+     * @Template()
+     */
+    public function certificatesAction() {
+        
+    }
+    
+    /**
+     * @Route("/projects", name="projects")
+     * @Template()
+     */
+    public function projectsAction() {
+        
+    }
+    
+    /**
+     * @Route("/conact-us", name="contact_us")
+     * @Template()
+     */
+    public function contactUsAction() {
+        
     }
 }

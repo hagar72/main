@@ -1,5 +1,112 @@
 {% extends "MainAbstractBundle::layout.html.twig" %}
 
-{% block content %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/mainabstract/css/pgwslideshow.css') }}" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    <!-- Start portfolio section -->
+    <section id="portfolio">
+        <header class="container">
+            <h2 class="text-center">projects</h2>
+            <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. </p>
+        </header>
+        <div class="container" id="filter-controls">
+            <nav class="centered-pills clearfix">
+                <ul class="nav nav-pills" >
+                    <li><a href="javascript:void(0);" class="filter active" data-filter="all">All</a></li>
+                    <li><a href="javascript:void(0);" class="filter" data-filter=".wip">WIP Projects</a></li>
+                    <li><a href="javascript:void(0);" class="filter" data-filter=".complete-projects">Complete Projects</a></li>
+                </ul>
+            </nav>
+            <div class="projects row"  id="single-project"> </div>
+            <div id="slidingDiv" class="toggleDiv row-fluid single-project clearfix"> <span class="show_hide close"> <i class="icon-cancel"></i> </span>
+                <ul class="pgwSlideshow">
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/1.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/2.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/3.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/4.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/5.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/6.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/7.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/8.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/9.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/10.jpg') }}"></li>
+                </ul>
+                <!--END OF IMAGE GALLERY--> 
+            </div>
+            <div id="slidingDiv1" class="toggleDiv row-fluid single-project clearfix"> <span class="show_hide close"> <i class="icon-cancel"></i> </span>
+                <ul class="pgwSlideshow">
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/1.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/2.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/3.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/4.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/5.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/6.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/7.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/8.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/9.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/10.jpg') }}"></li>
+                </ul>
+                <!--END OF IMAGE GALLERY--> 
+            </div>
+            <div id="slidingDiv2" class="toggleDiv row-fluid single-project clearfix"> <span class="show_hide close"> <i class="icon-cancel"></i> </span>
+                <ul class="pgwSlideshow">
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/1.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/2.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/3.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/4.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/5.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/6.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/7.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/8.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/9.jpg') }}"></li>
+                    <li><img src="{{ asset('bundles/mainabstract/img/gallery/10.jpg') }}"></li>
+                </ul>
+                <!--END OF IMAGE GALLERY--> 
+            </div>
+            <!--Figure has Gallery-->
+            <figure class="mix all portfolio-item wip col-md-4 col-sm-6 col-xs-12" >
+                <img class="img-responsive" src="{{ asset('bundles/mainabstract/img/portfolio/1.jpg') }}" alt="" />
+                <h3 class="text-left">project name</h3> 
+                <a rel="#slidingDiv" class="more show_hide" href="#single-project">
+                    <figcaption class="mask">click here to show gallery</figcaption>
+                </a> </figure>
+            <!--Figure has Gallery-->
+            <figure class="mix portfolio-item wip col-md-4 col-sm-6 col-xs-12"> 
+                <img class="img-responsive" src="{{ asset('bundles/mainabstract/img/portfolio/2.jpg') }}" alt="" />
+                <h3 class="text-left">project name</h3> 
+                <a rel="#slidingDiv1" class="more show_hide" href="#single-project">
+                    <figcaption class="mask">click here to show gallery</figcaption>
+                </a> </figure>
+            <figure class="mix portfolio-item complete-projects col-md-4 col-sm-6 col-xs-12">
+                <img class="img-responsive" src="{{ asset('bundles/mainabstract/img/portfolio/3.jpg') }}" alt="" />
+                <h3 class="text-left">project name</h3> 
+                <a href="#"> </a> </figure>
+            <!--Figure has Gallery--> 
+            <figure class="mix portfolio-item complete-projects col-md-4 col-sm-6 col-xs-12"> 
+                <img class="img-responsive" src="{{ asset('bundles/mainabstract/img/portfolio/4.jpg') }}" alt="" /> 
+                <h3 class="text-left">project name</h3> 
+                <a rel="#slidingDiv2" class="more show_hide" href="#single-project">
+                    <figcaption class="mask">click here to show gallery</figcaption>
+                </a> </figure>
+            <figure class="mix portfolio-item complete-projects col-md-4 col-sm-6 col-xs-12"> 
+                <img class="img-responsive" src="{{ asset('bundles/mainabstract/img/portfolio/5.jpg') }}" alt="" /> 
+                <h3 class="text-left">project name</h3> 
+                <a href="#"></a> </figure>
+            <figure class="mix portfolio-item complete-projects col-md-4 col-sm-6 col-xs-12"> 
+                <img class="img-responsive" src="{{ asset('bundles/mainabstract/img/portfolio/6.jpg') }}" alt="" /> 
+                <h3 class="text-left">project name</h3> 
+                <a href="#"></a> </figure>
+        </div><!--filter-controls-->
+    </section>
+    <!-- End portfolio section -->
+{% endblock %}
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}

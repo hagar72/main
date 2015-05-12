@@ -1,5 +1,111 @@
 {% extends "MainAbstractBundle::layout.html.twig" %}
 
-{% block content %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <!--Main CSS for the website-->
+    <link rel="stylesheet" href="{{ asset('bundles/mainabstract/css/main.css') }}">
+{% endblock %}
 
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+        <h2 class="text-center">contact</h2>
+        <p class="text-center" style="margin:30px 0;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
+        <div id="form">
+            <form class="clearfix" method="post" >
+                <div class="col-md-6 col-lg-6 form-group">
+                    <input type="text" placeholder="name" class="form-control" id="name">
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    <input type="email" class="form-control" placeholder="Your Mail" id="email">
+                </div>
+                <div class="btn-group btn-input clearfix col-md-6">
+                    <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"> <span data-bind="label">Select One</span>&nbsp;<span class="caret"></span> </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Manager 1</a></li>
+                        <li><a href="#">Manager 2</a></li>
+                        <li><a href="#">Manager 3</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    <input type="text" placeholder="Subject" id="subject" class="form-control">
+                </div>
+                <div class="col-md-12 form-group">
+                    <textarea placeholder="Message" class="form-control" id="message" rows="5"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">send</button>
+                </div>
+            </form>
+            <!--contact-form--> 
+        </div>
+        <div class="contact-details clearfix">
+            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                <h5>general manager</h5>
+                <span>
+                    <label>name :</label>
+                    adel ahmad</span><br>
+                <span>
+                    <label>mobile :</label>
+                    01025147896</span><br>
+                <span>
+                    <label>Land Line/Ext.:</label>
+                    25414662 ext: 254</span><br>
+                <span>
+                    <label>Mail:</label>
+                    Mr.Ahmad@gmail.com</span> </div>
+            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                <h5>general manager</h5>
+                <span>
+                    <label>name :</label>
+                    adel ahmad</span><br>
+                <span>
+                    <label>mobile :</label>
+                    01025147896</span><br>
+                <span>
+                    <label>Land Line/Ext.:</label>
+                    25414662 ext: 254</span><br>
+                <span>
+                    <label>Mail:</label>
+                    Mr.Ahmad@gmail.com</span> </div>
+            <div class="col-md-4 col-sm-12 col-xs-12 text-center">
+                <h5>general manager</h5>
+                <span>
+                    <label>name :</label>
+                    adel ahmad</span><br>
+                <span>
+                    <label>mobile :</label>
+                    01025147896</span><br>
+                <span>
+                    <label>Land Line/Ext.:</label>
+                    25414662 ext: 254</span><br>
+                <span>
+                    <label>Mail:</label>
+                    Mr.Ahmad@gmail.com</span> </div>
+        </div>
+        <!--contact-details-->
+        <div class="google-maps">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="600" height="200" frameborder="0" style="border:0"></iframe>
+        </div>
+    </div><!--Container-->
+{% endblock %}
+
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document.body).on('click', '.dropdown-menu li', function(event) {
+            var $target = $(event.currentTarget);
+            $target.closest('.btn-group')
+                .find('[data-bind="label"]').text($target.text())
+                .end()
+                .children('.dropdown-toggle').dropdown('toggle');
+            
+            return false;
+        });
+    </script>
 {% endblock %}

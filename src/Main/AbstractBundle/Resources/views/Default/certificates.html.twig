@@ -1,5 +1,43 @@
 {% extends "MainAbstractBundle::layout.html.twig" %}
 
-{% block content %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/mainabstract/css/colorbox.css') }}" media="all" rel="stylesheet" type="text/css">
 {% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+        <h2 class="text-center">certificates</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center no-head">no.</th>
+                    <th class="middle">Description</th>
+                    <th class="text-center">Pic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" width="10%" class="text-center no">1</th>
+                    <td class="middle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen</td>
+                    <td><a class="group2" href="{{ asset('bundles/mainabstract/img/bg1.jpg') }}"><img src="{{ asset('bundles/mainabstract/img/certificate-1.jpg') }}" class="img-responsive"></a></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-center no">2</th>
+                    <td class="middle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen</td>
+                    <td><a class="group2" href="{{ asset('bundles/mainabstract/img/bg2.jpg') }}"><img src="{{ asset('bundles/mainabstract/img/certificate-2.jpg') }}" class="img-responsive"></a></td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-center no">3</th>
+                    <td class="middle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen</td>
+                    <td><a class="group2" href="{{ asset('bundles/mainabstract/img/bg3.jpg') }}"><img src="{{ asset('bundles/mainabstract/img/certificate-3.jpg') }}" class="img-responsive"></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="blue-btn text-center button btn-block">download all certificates</a>
+    </div>
+{% endblock %}
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}

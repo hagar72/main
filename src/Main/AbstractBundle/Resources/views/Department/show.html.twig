@@ -1,0 +1,40 @@
+{% extends "MainAbstractBundle::layout.html.twig" %}
+
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}
+{% block container %}
+    {{ parent() }}
+    <h1>Department</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>{{ entity.department }}</td>
+            </tr>
+            <tr>
+                <th>Emails</th>
+                <td>{{ entity.emails }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('departments') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('departments_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

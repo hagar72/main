@@ -1,0 +1,19 @@
+{% extends "MainAbstractBundle::layout.html.twig" %}
+
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}
+{% block container %}
+    {{ parent() }}
+    <h1>Department creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('departments') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

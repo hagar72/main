@@ -6,26 +6,39 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Menu
+ *
+ * @ORM\Table(name="menu")
+ * @ORM\Entity
  */
 class Menu
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=225, nullable=false)
      */
     private $title;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=225, nullable=false)
      */
     private $link;
-
+    
     /**
      * @var string
+     *
+     * @ORM\Column(name="alias", type="string", length=225, nullable=false)
      */
     private $alias;
 

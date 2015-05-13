@@ -1,7 +1,9 @@
-<html>
-	<head>
-	</head>
-	<body>
-		
-	</body>
-</html>
+{% extends "MainAbstractBundle::layout.html.twig" %}
+
+
+{% block container %}
+    {% block fos_user_content %}{% endblock %}
+{% endblock %}
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}

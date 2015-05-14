@@ -1,3 +1,8 @@
+main_contact:
+    resource: "@MainContactBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 main_abstract:
     resource: "@MainAbstractBundle/Controller/"
     type:     annotation

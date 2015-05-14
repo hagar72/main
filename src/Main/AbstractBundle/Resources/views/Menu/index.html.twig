@@ -17,7 +17,7 @@
                     {{ currentPath }}
                     {% set itemClass = '' %}
                     {% for entity in entities %}
-                        {% if entity.link == 'contact_us' %}
+                        {% if entity.link == 'contacts_new' %}
                             {% set itemClass = 'contact' %}
                         {% endif %}
                         <li class="{{ itemClass}}"><a href="{{ path(entity.link) }}" class="{% if currentPath == entity.link %}active{%endif%}">{{ entity.title }}</a></li>

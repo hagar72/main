@@ -40,12 +40,4 @@ class DefaultController extends Controller
     public function projectsAction() {
         return array();
     }
-    
-    /**
-     * @Route("/conact-us", name="contact_us")
-     * @Template()
-     */
-    public function contactUsAction() {
-        return array();
-    }
 }

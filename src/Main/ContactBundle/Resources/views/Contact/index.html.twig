@@ -1,0 +1,43 @@
+{% extends "MainAbstractBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/mainabstract/css/colorbox.css') }}" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+        <h2 class="text-center">Contact list</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center no-head">Id</th>
+                    <th class="middle">Sender</th>
+                    <th class="middle">Name</th>
+                    <th class="middle">Subject</th>
+                    <th class="middle">Message</th>
+                    <th class="middle">Department</th>
+                    <th class="middle">Sent</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <th scope="row" width="10%" class="text-center no">{{ entity.id }}</th>
+                        <td class="middle"><a href="{{ path('contacts_show', { 'id': entity.id }) }}">{{ entity.subject }}</a></td>
+                        <td class="middle">{{ entity.sender }}</td>
+                        <td class="middle">{{ entity.name }}</td>
+                        <td class="middle">{{ entity.message }}</td>
+                        <td class="middle">{{ entity.department.department }}</td>
+                        <td>{{ (entity.sent)? 'Yes': 'No' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}

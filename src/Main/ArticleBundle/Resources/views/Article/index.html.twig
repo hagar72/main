@@ -1,0 +1,64 @@
+{% extends "MainAbstractBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/mainabstract/css/colorbox.css') }}" media="all" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+        <h2 class="text-center">Article list</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center no-head">Id</th>
+                    <th class="middle">Title</th>
+                    <th class="middle">Content</th>
+                    <th class="middle">Image</th>
+                    <th class="middle">Language</th>
+                    <th class="middle">Created</th>
+                    <th class="middle">Updated</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <th scope="row" width="10%" class="text-center no"><a href="{{ path('articles_show', { 'id': entity.id }) }}">{{ entity.id }}</a</th>
+                        <td class="middle">{{ entity.title }}</td>
+                        <td class="middle">{{ entity.smallContent }}</td>
+                        <td class="middle"><img class="col-md-12" src="{{ asset(entity.webPath) }}" alt="{{ entity.image }}" /></td>
+                        <td class="middle">{{ entity.language.language }}</td>
+                        <td class="middle">{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('articles_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('articles_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="blue-btn text-center button btn-block">download all certificates</a>
+    </div>
+
+
+        <ul>
+        <li>
+            <a href="{{ path('articles_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}

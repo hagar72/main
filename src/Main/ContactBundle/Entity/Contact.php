@@ -50,7 +50,7 @@ class Contact
     private $message;
 
     /**
-     * @var \Language
+     * @var \Department
      *
      * @ORM\ManyToOne(targetEntity="Main\AbstractBundle\Entity\Department")
      * @ORM\JoinColumns({

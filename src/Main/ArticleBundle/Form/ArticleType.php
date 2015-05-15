@@ -1,12 +1,12 @@
 <?php
 
-namespace Main\AbstractBundle\Form;
+namespace Main\ArticleBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepartmentType extends AbstractType
+class ArticleType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,15 @@ class DepartmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('department')
-            ->add('emails')
+            ->add('title')
+            ->add('content')
+            ->add('image', 'file', array(
+                'data_class' => null
+            ))
+            ->add('language', 'entity', array(
+                'class' => 'MainAbstractBundle:Language',
+                'property' => 'language'
+            ))
         ;
     }
     
@@ -26,7 +33,7 @@ class DepartmentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Main\AbstractBundle\Entity\Department'
+            'data_class' => 'Main\ArticleBundle\Entity\Article'
         ));
     }
 
@@ -35,6 +42,6 @@ class DepartmentType extends AbstractType
      */
     public function getName()
     {
-        return 'main_abstractbundle_department';
+        return 'main_articlebundle_article';
     }
 }

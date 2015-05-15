@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepartmentType extends AbstractType
+class LanguageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,10 @@ class DepartmentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('department')
-            ->add('emails')
+            ->add('language')
+            ->add('alias')
+            ->add('created')
+            ->add('updated')
         ;
     }
     
@@ -26,7 +28,7 @@ class DepartmentType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Main\AbstractBundle\Entity\Department'
+            'data_class' => 'Main\AbstractBundle\Entity\Language'
         ));
     }
 
@@ -35,6 +37,6 @@ class DepartmentType extends AbstractType
      */
     public function getName()
     {
-        return 'main_abstractbundle_department';
+        return 'main_abstractbundle_language';
     }
 }

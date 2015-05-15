@@ -1,27 +1,27 @@
 <?php
 
-namespace Main\AbstractBundle\Controller;
+namespace Main\ArticleBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Main\AbstractBundle\Entity\Department;
-use Main\AbstractBundle\Form\DepartmentType;
+use Main\ArticleBundle\Entity\Article;
+use Main\ArticleBundle\Form\ArticleType;
 
 /**
- * Department controller.
+ * Article controller.
  *
- * @Route("/departments")
+ * @Route("/articles")
  */
-class DepartmentController extends Controller
+class ArticleController extends Controller
 {
 
     /**
-     * Lists all Department entities.
+     * Lists all Article entities.
      *
-     * @Route("/", name="departments")
+     * @Route("/", name="articles")
      * @Method("GET")
      * @Template()
      */
@@ -29,31 +29,33 @@ class DepartmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MainAbstractBundle:Department')->findAll();
+        $entities = $em->getRepository('MainArticleBundle:Article')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Department entity.
+     * Creates a new Article entity.
      *
-     * @Route("/", name="departments_create")
+     * @Route("/", name="articles_create")
      * @Method("POST")
-     * @Template("MainAbstractBundle:Department:new.html.twig")
+     * @Template("MainArticleBundle:Article:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Department();
+        $entity = new Article();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->processFile();
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('departments_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('articles_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +65,16 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Creates a form to create a Department entity.
+     * Creates a form to create a Article entity.
      *
-     * @param Department $entity The entity
+     * @param Article $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Department $entity)
+    private function createCreateForm(Article $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('departments_create'),
+        $form = $this->createForm(new ArticleType(), $entity, array(
+            'action' => $this->generateUrl('articles_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +84,15 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a form to create a new Department entity.
+     * Displays a form to create a new Article entity.
      *
-     * @Route("/new", name="departments_new")
+     * @Route("/new", name="articles_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Department();
+        $entity = new Article();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +102,9 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Finds and displays a Department entity.
+     * Finds and displays a Article entity.
      *
-     * @Route("/{id}", name="departments_show")
+     * @Route("/{id}", name="articles_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +112,10 @@ class DepartmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+        $entity = $em->getRepository('MainArticleBundle:Article')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +127,9 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Department entity.
+     * Displays a form to edit an existing Article entity.
      *
-     * @Route("/{id}/edit", name="departments_edit")
+     * @Route("/{id}/edit", name="articles_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +137,10 @@ class DepartmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+        $entity = $em->getRepository('MainArticleBundle:Article')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +154,16 @@ class DepartmentController extends Controller
     }
 
     /**
-    * Creates a form to edit a Department entity.
+    * Creates a form to edit a Article entity.
     *
-    * @param Department $entity The entity
+    * @param Article $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Department $entity)
+    private function createEditForm(Article $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('departments_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new ArticleType(), $entity, array(
+            'action' => $this->generateUrl('articles_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +172,20 @@ class DepartmentController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Department entity.
+     * Edits an existing Article entity.
      *
-     * @Route("/{id}", name="departments_update")
+     * @Route("/{id}", name="articles_update")
      * @Method("PUT")
-     * @Template("MainAbstractBundle:Department:edit.html.twig")
+     * @Template("MainArticleBundle:Article:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+        $entity = $em->getRepository('MainArticleBundle:Article')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -191,9 +193,10 @@ class DepartmentController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->processFile();
             $em->flush();
 
-            return $this->redirect($this->generateUrl('departments_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('articles_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +206,9 @@ class DepartmentController extends Controller
         );
     }
     /**
-     * Deletes a Department entity.
+     * Deletes a Article entity.
      *
-     * @Route("/{id}", name="departments_delete")
+     * @Route("/{id}", name="articles_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +218,21 @@ class DepartmentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+            $entity = $em->getRepository('MainArticleBundle:Article')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Department entity.');
+                throw $this->createNotFoundException('Unable to find Article entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('departments'));
+        return $this->redirect($this->generateUrl('articles'));
     }
 
     /**
-     * Creates a form to delete a Department entity by id.
+     * Creates a form to delete a Article entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +241,7 @@ class DepartmentController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('departments_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('articles_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

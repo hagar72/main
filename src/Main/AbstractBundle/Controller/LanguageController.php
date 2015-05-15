@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Main\AbstractBundle\Entity\Department;
-use Main\AbstractBundle\Form\DepartmentType;
+use Main\AbstractBundle\Entity\Language;
+use Main\AbstractBundle\Form\LanguageType;
 
 /**
- * Department controller.
+ * Language controller.
  *
- * @Route("/departments")
+ * @Route("/languages")
  */
-class DepartmentController extends Controller
+class LanguageController extends Controller
 {
 
     /**
-     * Lists all Department entities.
+     * Lists all Language entities.
      *
-     * @Route("/", name="departments")
+     * @Route("/", name="languages")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +29,22 @@ class DepartmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MainAbstractBundle:Department')->findAll();
+        $entities = $em->getRepository('MainAbstractBundle:Language')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Department entity.
+     * Creates a new Language entity.
      *
-     * @Route("/", name="departments_create")
+     * @Route("/", name="languages_create")
      * @Method("POST")
-     * @Template("MainAbstractBundle:Department:new.html.twig")
+     * @Template("MainAbstractBundle:Language:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Department();
+        $entity = new Language();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +53,7 @@ class DepartmentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('departments_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('languages_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +63,16 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Creates a form to create a Department entity.
+     * Creates a form to create a Language entity.
      *
-     * @param Department $entity The entity
+     * @param Language $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Department $entity)
+    private function createCreateForm(Language $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('departments_create'),
+        $form = $this->createForm(new LanguageType(), $entity, array(
+            'action' => $this->generateUrl('languages_create'),
             'method' => 'POST',
         ));
 
@@ -82,15 +82,15 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a form to create a new Department entity.
+     * Displays a form to create a new Language entity.
      *
-     * @Route("/new", name="departments_new")
+     * @Route("/new", name="languages_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Department();
+        $entity = new Language();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +100,9 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Finds and displays a Department entity.
+     * Finds and displays a Language entity.
      *
-     * @Route("/{id}", name="departments_show")
+     * @Route("/{id}", name="languages_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +110,10 @@ class DepartmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+        $entity = $em->getRepository('MainAbstractBundle:Language')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Language entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +125,9 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Department entity.
+     * Displays a form to edit an existing Language entity.
      *
-     * @Route("/{id}/edit", name="departments_edit")
+     * @Route("/{id}/edit", name="languages_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +135,10 @@ class DepartmentController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+        $entity = $em->getRepository('MainAbstractBundle:Language')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Language entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,16 +152,16 @@ class DepartmentController extends Controller
     }
 
     /**
-    * Creates a form to edit a Department entity.
+    * Creates a form to edit a Language entity.
     *
-    * @param Department $entity The entity
+    * @param Language $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Department $entity)
+    private function createEditForm(Language $entity)
     {
-        $form = $this->createForm(new DepartmentType(), $entity, array(
-            'action' => $this->generateUrl('departments_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new LanguageType(), $entity, array(
+            'action' => $this->generateUrl('languages_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -170,20 +170,20 @@ class DepartmentController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Department entity.
+     * Edits an existing Language entity.
      *
-     * @Route("/{id}", name="departments_update")
+     * @Route("/{id}", name="languages_update")
      * @Method("PUT")
-     * @Template("MainAbstractBundle:Department:edit.html.twig")
+     * @Template("MainAbstractBundle:Language:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+        $entity = $em->getRepository('MainAbstractBundle:Language')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
+            throw $this->createNotFoundException('Unable to find Language entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +193,7 @@ class DepartmentController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('departments_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('languages_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +203,9 @@ class DepartmentController extends Controller
         );
     }
     /**
-     * Deletes a Department entity.
+     * Deletes a Language entity.
      *
-     * @Route("/{id}", name="departments_delete")
+     * @Route("/{id}", name="languages_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +215,21 @@ class DepartmentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
+            $entity = $em->getRepository('MainAbstractBundle:Language')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Department entity.');
+                throw $this->createNotFoundException('Unable to find Language entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('departments'));
+        return $this->redirect($this->generateUrl('languages'));
     }
 
     /**
-     * Creates a form to delete a Department entity by id.
+     * Creates a form to delete a Language entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,7 +238,7 @@ class DepartmentController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('departments_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('languages_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

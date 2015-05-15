@@ -1,10 +1,10 @@
 <?php
 
-namespace Main\AbstractBundle\Tests\Controller;
+namespace Main\ArticleBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DepartmentControllerTest extends WebTestCase
+class ArticleControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class DepartmentControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/departments/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /departments/");
+        $crawler = $client->request('GET', '/articles/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /articles/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'main_abstractbundle_department[field_name]'  => 'Test',
+            'main_articlebundle_article[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class DepartmentControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'main_abstractbundle_department[field_name]'  => 'Foo',
+            'main_articlebundle_article[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

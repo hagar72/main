@@ -14,7 +14,8 @@
         <h2 class="text-center">Article Edit</h2>
         <p class="text-center" style="margin:30px 0;">{{ form_errors(edit_form) }}</p>
         <div id="form">
-            <form class="clearfix" action="{{ path('contacts_create') }}" method="post" >
+            {{ form_start(edit_form, {'class': 'clearfix'}) }}
+            
                 {{ form_row(edit_form._token) }}
                 <div class="col-md-6 col-lg-12 form-group">
                     {{ form_widget(edit_form.title, { 'type': 'text', 'attr': {'placeholder': 'Title', 'class': 'form-control', 'id': 'title'} }) }}
@@ -31,13 +32,13 @@
                     {{ form_widget(edit_form.language, {  'attr': {'class': 'dropdown-menu', 'role': 'menu'} }) }}
                 </div>
                 <div class="col-md-12">
-                    <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">Create</button>
+                    <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">Update</button>
                 </div>
-            </form>
+
             <!--contact-form--> 
         </div>
         <a href="{{ path('articles') }}">Back to the list</a>
-        {{ form(delete_form) }}
+        
     </div>
 {% endblock %}
 

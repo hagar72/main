@@ -193,6 +193,8 @@ class ArticleController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $image = $entity->getImage();
+            
             $entity->processFile();
             $em->flush();
 

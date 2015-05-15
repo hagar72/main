@@ -45,7 +45,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=225, nullable=true)
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="600000000")
      */
     private $image;
 
@@ -73,7 +73,12 @@ class Article
      */
     private $language;
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=225, nullable=true)
+     */
+    private $path;
 
     /**
      * Get id
@@ -225,12 +230,12 @@ class Article
     
     public function getAbsolutePath()
     {
-        return (null === $this->image)? null: $this->getUploadRootDir().'/'.$this->image;
+        return (null === $this->path)? null: $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
     {
-        return (null === $this->image)? null: $this->getUploadDir(). $this->image;
+        return (null === $this->path)? null: $this->path;
     }
 
     protected function getUploadRootDir()
@@ -252,7 +257,7 @@ class Article
             return false;
         }
         $uploadFileMover = new UploadFileMover();
-        $this->image = $uploadFileMover->moveUploadedFile($this->image, self::getUploadDir(), self::getWebPath());
+        $this->path = $uploadFileMover->moveUploadedFile($this->image, self::getUploadDir(), self::getWebPath());
     }
     
     public function getSmallContent() {

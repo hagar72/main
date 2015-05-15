@@ -46,17 +46,9 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a class="blue-btn text-center button btn-block">download all certificates</a>
     </div>
+    <a class="blue-btn text-center button btn-block" href="{{ path('articles_new') }}">Create a new entry</a>
 
-
-        <ul>
-        <li>
-            <a href="{{ path('articles_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
 
 {% endblock %}
 {% block homeSlider %}{% endblock %}

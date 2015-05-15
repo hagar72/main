@@ -9,3 +9,5 @@ app/cache
 app/logs
 
 composer.lock
+
+web/uploads

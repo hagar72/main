@@ -14,15 +14,19 @@
                     {% else %}
                         {% set currentPath = path(app.request.attributes.get('_route')) %}
                     {% endif %}
-                    {{ currentPath }}
+                    
                     {% set itemClass = '' %}
                     {% for entity in entities %}
                         {% if entity.link == 'contacts_new' %}
                             {% set itemClass = 'contact' %}
                         {% endif %}
-                        <li class="{{ itemClass}}"><a href="{{ path(entity.link) }}" class="{% if currentPath == entity.link %}active{%endif%}">{{ entity.title }}</a></li>
+                        <li class="{{ itemClass}}"><a href="{{ path(entity.link) }}" class="{% if currentPath == entity.link %}active{%endif%}">{{ entity.title|trans }}</a></li>
                     {% endfor %}
-                    <li class="ar-lang"><a class="pull-right" href="index-ar.html">العربية</a></li>
+                    {%if 'en' ==  app.session.get('_locale') %}
+                        <li class="ar-lang"><a class="pull-right" href="{{ path('language_switch', { 'locale': 'ar'}) }}">العربية</a></li>
+                    {% else %}
+                        <li class="ar-lang"><a class="pull-right" href="{{ path('language_switch', { 'locale': 'en'}) }}">English</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <!--/.nav-collapse --> 

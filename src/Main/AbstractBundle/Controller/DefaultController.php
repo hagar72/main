@@ -46,4 +46,17 @@ class DefaultController extends Controller
     public function projectsAction() {
         return array();
     }
+    
+    
+    /**
+     * @Route("/switch-language/{locale}", name="language_switch")
+     * @Template()
+     */
+    public function switchLangAction($locale)
+    {
+        $request = $this->container->get('request');
+        $referer = $request->headers->get('referer');
+        $this->get('session')->set('_locale', $locale);
+        return $this->redirect($referer);
+    }
 }

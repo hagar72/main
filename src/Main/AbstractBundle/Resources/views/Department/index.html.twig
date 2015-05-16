@@ -19,8 +19,7 @@
             <tbody>
                 {% for entity in entities %}
                 <tr>
-                    <th scope="row" width="10%" class="text-center no">
-                        <a href="{{ path('departments_show', { 'id': entity.id }) }}" >{{ entity.department }}</a></th>
+                    <th scope="row" width="10%" class="text-center no">{{ entity.department }}</th>
                     <td class="middle">{{ entity.emails }}</td>
                     <td><a class="group2" href="{{ path('departments_edit', { 'id': entity.id }) }}">Edit</a></td>
                 </tr>

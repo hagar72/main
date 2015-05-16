@@ -1,16 +1,46 @@
-{% extends '::base.html.twig' %}
+{% extends "MainAbstractBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Menu edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('menu') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block stylesheets %}  
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/mainabstract/css/colorbox.css') }}">
 {% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+
+        <h2 class="text-center">Menu Edit</h2>
+
+        <p class="text-center" style="margin:30px 0;">{{ form_errors(edit_form) }}</p>
+        <div id="form">
+            {{ form_start(edit_form, {'class': 'clearfix'}) }}
+            
+                {{ form_row(edit_form._token) }}
+                <div class="col-md-6 col-lg-12 form-group">
+                    {{ form_widget(edit_form.title, { 'type': 'text', 'attr': {'placeholder': 'Title', 'class': 'form-control', 'id': 'title'} }) }}
+                </div>
+                <div class="col-md-6 col-lg-12 form-group">
+                    {{ form_widget(edit_form.link, { 'type': 'text', 'attr': {'placeholder': 'Link', 'class': 'form-control', 'id': 'link'} }) }}
+                </div>
+                <div class="col-md-6 col-lg-6 form-group">
+                    {{ form_widget(edit_form.alias, { 'type': 'text', 'attr': {'placeholder': 'Alias', 'class': 'form-control', 'id': 'alias'} }) }}
+                </div>
+                <div class="col-md-12">
+                    <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">Update</button>
+                </div>
+
+            <!--contact-form--> 
+        </div>
+    </div>
+                    
+        <div>
+            <a href="{{ path('menu') }}">Back to the list</a>   
+            {{ form(delete_form) }}
+        </div>
+{% endblock %}
+
+{% block homeSlider %}{% endblock %}
+{% block single_item %}{% endblock %}
+{% block projects %}{% endblock %}
+
+

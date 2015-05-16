@@ -53,7 +53,7 @@ class MenuController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('menu_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('menu', array('id' => $entity->getId())));
         }
 
         return array(
@@ -243,5 +243,23 @@ class MenuController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    
+    /**
+     * Lists all Menu entities.
+     *
+     * @Route("/menu-display", name="menu_display")
+     * @Method("GET")
+     * @Template()
+     */
+    public function menuAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('MainAbstractBundle:Menu')->findAll();
+
+        return array(
+            'entities' => $entities,
+        );
     }
 }

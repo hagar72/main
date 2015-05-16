@@ -100,31 +100,6 @@ class MenuController extends Controller
     }
 
     /**
-     * Finds and displays a Menu entity.
-     *
-     * @Route("/{id}", name="menu_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainAbstractBundle:Menu')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Menu entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
      * Displays a form to edit an existing Menu entity.
      *
      * @Route("/{id}/edit", name="menu_edit")

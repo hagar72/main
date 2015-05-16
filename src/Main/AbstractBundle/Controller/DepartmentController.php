@@ -53,7 +53,7 @@ class DepartmentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('departments_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('departments', array('id' => $entity->getId())));
         }
 
         return array(
@@ -96,31 +96,6 @@ class DepartmentController extends Controller
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
-    }
-
-    /**
-     * Finds and displays a Department entity.
-     *
-     * @Route("/{id}", name="departments_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainAbstractBundle:Department')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Department entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         );
     }
 

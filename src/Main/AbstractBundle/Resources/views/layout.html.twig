@@ -12,6 +12,9 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
             <!--Main CSS for the website-->
             <link href="{{ asset('bundles/mainabstract/css/main.css') }}" media="all" rel="stylesheet" type="text/css">
+            {% if 'ar' == app.session.get('_locale') %}
+                <link rel="stylesheet" href="{{ asset('bundles/mainabstract/css/ar.css') }}">
+            {% endif %}
         {% endblock %}
     </head>
     <body>

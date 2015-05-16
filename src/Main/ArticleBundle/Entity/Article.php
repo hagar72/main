@@ -235,7 +235,7 @@ class Article
 
     public function getWebPath()
     {
-        return (null === $this->path)? null: $this->path;
+        return (null === $this->path)? null: $this->getUploadDir(). $this->path;
     }
 
     protected function getUploadRootDir()
@@ -256,8 +256,16 @@ class Article
         if (! ($this->image instanceof UploadedFile) ) {
             return false;
         }
+        $oldPath = $this->getWebPath();
+        
         $uploadFileMover = new UploadFileMover();
-        $this->path = $uploadFileMover->moveUploadedFile($this->image, self::getUploadDir(), self::getWebPath());
+        $this->path = $uploadFileMover->moveUploadedFile($this->image, self::getUploadDir());
+        
+        if($oldPath && null != $oldPath && $oldPath != $this->path) {
+            if(file_exists($oldPath)) {
+                unlink($oldPath);
+            }
+        }
     }
     
     public function getSmallContent() {

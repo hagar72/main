@@ -18,7 +18,8 @@ class ArticleType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('image', 'file', array(
-                'data_class' => null
+                'data_class' => null,
+                'required' => false
             ))
             ->add('language', 'entity', array(
                 'class' => 'MainAbstractBundle:Language',

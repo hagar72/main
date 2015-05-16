@@ -226,6 +226,7 @@ class ArticleController extends Controller
                 throw $this->createNotFoundException('Unable to find Article entity.');
             }
 
+            unlink($entity->getWebPath());
             $em->remove($entity);
             $em->flush();
         }

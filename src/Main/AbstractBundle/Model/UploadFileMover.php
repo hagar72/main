@@ -16,11 +16,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class UploadFileMover {
 
-    public function moveUploadedFile(UploadedFile $file, $uploadBasePath,$relativePath) {
+    public function moveUploadedFile(UploadedFile $file, $uploadBasePath) {
         $originalName = $file->getFilename();
         // use filemtime() to have a more determenistic way to determine the subpath, otherwise its hard to test.
        // $relativePath = date('Y-m', filemtime($file->getPath()));
-        $targetFileName = $relativePath . DIRECTORY_SEPARATOR . $originalName;
+        $targetFileName = DIRECTORY_SEPARATOR . $originalName;
         $targetFilePath = $uploadBasePath . DIRECTORY_SEPARATOR . $targetFileName;
         $ext = $file->getExtension();
         $i=1;
@@ -33,18 +33,19 @@ class UploadFileMover {
                 $targetFilePath = $targetFilePath . $i++;
             }
         }
+        $imageDetails = explode('.', $file->getClientOriginalName());
 
-
-        $targetDir = $uploadBasePath . DIRECTORY_SEPARATOR . $relativePath;
+        $targetDir = $uploadBasePath . DIRECTORY_SEPARATOR ;
         if (!is_dir($targetDir)) {
-            $ret = mkdir($targetDir, umask(), true);
+            $ret = touch($targetDir . '.' . $imageDetails[1], umask(), true);
             if (!$ret) {
                 throw new \RuntimeException("Could not create target directory to move temporary file into.");
             }
         }
-        $file->move($targetDir, basename($targetFilePath));
+        $fileTobeMoved = basename($targetFilePath . strtotime(date('Y-m-d H:s:i')). '.' . $imageDetails[1]);
+        $file->move($targetDir, $fileTobeMoved);
 
-        return str_replace($uploadBasePath . DIRECTORY_SEPARATOR, "", $targetFilePath);
+        return str_replace($uploadBasePath . DIRECTORY_SEPARATOR, "", $targetFilePath . strtotime(date('Y-m-d H:s:i'))) . '.' . $imageDetails[1];
     }
 
 }

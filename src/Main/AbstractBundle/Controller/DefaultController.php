@@ -15,9 +15,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $articles = $em->getRepository('MainArticleBundle:Article')->findAll();
-
+        $locale = $this->get('request')->getLocale();
+        $language = $em->getRepository('MainAbstractBundle:Language')->findOneBy(array('alias' => $locale));
+        $articles = $em->getRepository('MainArticleBundle:Article')->findBy(array('language' => $language->getId()));
+        
         return array(
             'articles' => $articles,
         );

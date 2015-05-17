@@ -4,3 +4,10 @@
 .float-right {
     float: right;
 }
+.user-login {
+    font-weight: bold;
+    margin: 3px 20px 3px 3px;
+}
+.user-login a {
+    color: white;
+}

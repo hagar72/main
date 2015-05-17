@@ -7,6 +7,7 @@
 <div class="container">
     <div id="form" class="registeration">
         <form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="clearfix fos_user_resetting_reset">
+            {{ form_row(form._token) }}
             {% for passwordField in form.plainPassword %}
                 <div class="col-md-6 col-lg-12 form-group">
                     {{ form_widget(passwordField, { 'attr': {'placeholder': 'Password'|trans, 'class': 'form-control'} }) }}

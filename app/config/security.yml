@@ -32,13 +32,13 @@ security:
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: ROLE_ADMIN }
-        - { path: ^/resetting, role: ROLE_ADMIN }
+        - { path: ^/register, role: ROLE_USER }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
-        - { path: ^/articles/new, role: ROLE_ADMIN }
-        - { path: ^/articles/.*/edit, role: ROLE_ADMIN }
-        - { path: ^/articles/delete, role: ROLE_ADMIN }
+        - { path: ^/articles/new, role: ROLE_USER }
+        - { path: ^/articles/.*/edit, role: ROLE_USER }
+        - { path: ^/articles/delete, role: ROLE_USER }
         
-        - { path: ^/contacts/.*/edit, role: ROLE_ADMIN }
-        - { path: ^/articles/delete, role: ROLE_ADMIN }
-        - { path: ^/articles/show, role: ROLE_ADMIN }
+        - { path: ^/contacts/.*/edit, role: ROLE_USER }
+        - { path: ^/articles/delete, role: ROLE_USER }
+        - { path: ^/articles/show, role: ROLE_USER }

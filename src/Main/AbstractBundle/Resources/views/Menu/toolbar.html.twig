@@ -7,5 +7,8 @@
         <li><a href="{{ path('fos_user_registration_register') }}">Add new reporter</a></li>
     </ul>
         <div class="user-login float-right">{{ 'Hello '|trans }}
-            <a href="{{ path('fos_user_profile_show')}}">{{ app.user.username }}</a>!</div>
+            <a href="{{ path('fos_user_profile_show')}}">{{ app.user.username }}</a>!
+            
+            <a href="{{ path('fos_user_security_logout') }}">{{ 'Logout'|trans}}</a>
+        </div>
 </div>

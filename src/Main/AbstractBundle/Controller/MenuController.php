@@ -232,9 +232,10 @@ class MenuController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('MainAbstractBundle:Menu')->findAll();
-
+        $active = $this->container->get('request')->attributes->get('_route');
         return array(
             'entities' => $entities,
+            'active' => $active
         );
     }
 }

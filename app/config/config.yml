@@ -76,3 +76,6 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Main\UserBundle\Entity\User
+    from_email:
+        address:        noreply@raya-jazira.com
+        sender_name:    Raya Jazira

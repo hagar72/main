@@ -12,19 +12,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    {% if app.request.attributes.get('_route') == '' %}
-                        {% set currentPath = 'home' %}
-                    {% else %}
-                        {% set currentPath = path(app.request.attributes.get('_route')) %}
-                    {% endif %}
+                    {% set currentPath = app.request.attributes.get('_route') %}
                     
-                    {% set itemClass = '' %}
-                    {% for entity in entities %}
-                        {% if entity.link == 'contacts_new' %}
-                            {% set itemClass = 'contact' %}
-                        {% endif %}
-                        <li class="{{ itemClass}}"><a href="{{ path(entity.link) }}" class="{% if currentPath == entity.link %}active{%endif%}">{{ entity.title|trans }}</a></li>
-                    {% endfor %}
+                    <li class=""><a href="{{ path('home') }}" class="{% if currentPath == 'home' %}active{%endif%}">{{ 'Home'|trans }}</a></li>
+                    <li class=""><a href="{{ path('about') }}" class="{% if currentPath == 'about' %}active{%endif%}">{{ 'About'|trans }}</a></li>
+                    <li class=""><a href="{{ path('certificates') }}" class="{% if currentPath == 'certificates' %}active{%endif%}">{{ 'Certificates'|trans }}</a></li>
+                    <li class=""><a href="{{ path('projects') }}" class="{% if currentPath == 'projects' %}active{%endif%}">{{ 'Projects'|trans }}</a></li>
+                    <li class=""><a href="{{ path('contacts_new') }}" class="{% if currentPath == 'contacts_new' %}active{%endif%}">{{ 'Contact us'|trans }}</a></li>
                     {%if 'en' ==  app.session.get('_locale') %}
                         <li class="ar-lang"><a class="pull-right" href="{{ path('language_switch', { 'locale': 'ar'}) }}">العربية</a></li>
                     {% else %}

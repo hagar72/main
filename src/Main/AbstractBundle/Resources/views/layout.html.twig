@@ -22,7 +22,7 @@
     <body>
         <div class="container-fluid demo-2">
             {% block header %}
-                {% render(controller('MainAbstractBundle:Menu:menu')) %}
+                {% include 'MainAbstractBundle:Menu:menu.html.twig' %}
             {% endblock %}
             
             {% block homeSlider %}

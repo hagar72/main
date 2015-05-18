@@ -14,7 +14,7 @@
         <p class="col-md-8">{{ article.smallContent }}</p>
         <img class="col-md-4 img-responsive" src="{{ asset(article.webPath) }}" alt="{{ article.image }}" />
         <div class="col-md-6 pull-left">
-            <a href="{{ path('articles_show', { 'id': article.id }) }}" class="text-center">read more</a>
+            <a href="{{ path('articles_show', { 'id': article.id }) }}" class="text-center">{{ 'Read More'|trans}}</a>
         </div>
     </div>
     {% endfor %}

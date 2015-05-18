@@ -44,7 +44,7 @@
                                     <div class="animated bounceInRight">
                                         <h2>Welcome to our website ! <br>WE MAKE CONTRACTING.</h2>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley .</p>
-                                        <a class="text-center" href="projects.html">See  our projects</a>
+                                        <a class="text-center" href="projects.html">{{ 'See our projects'|trans }}</a>
                                     </div>
                                 </div>
                             </div>              
@@ -98,7 +98,7 @@
             {% block single_item %}
                 <section class="news text-center clearfix">
                     <div class="container">
-                        <h1 class="title">latest news</h1>
+                        <h1 class="title">{{ 'Latest News'|trans }}</h1>
                         <div class="slider autoplay single-item">
                             <div>
                                 <h3>There are many variations of passages</h3>
@@ -121,7 +121,7 @@
             {% block projects %}
                 <div id="projects" class="clearfix">
                     <div class="col-md-6 col-sm-12 col-xs-12 WIP">
-                        <h2>WIP Projects</h2>
+                        <h2>{{ 'WIP Projects'|trans }}</h2>
                         <div class="slider2 autoplay single-item">
                             <div> <img src="{{ asset('bundles/mainabstract/img/slide1.jpg') }}"> </div>
                             <div> <img src="{{ asset('bundles/mainabstract/img/slide1.jpg') }}"> </div>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12 Complete-projects">
-                        <h2>completed Projects</h2>
+                        <h2>{{ 'Completed Projects'|trans }}</h2>
                         <div class="slider2 autoplay single-item">
                             <div> <img src="{{ asset('bundles/mainabstract/img/slide2.jpg') }}"> </div>
                             <div> <img src="{{ asset('bundles/mainabstract/img/slide2.jpg') }}"> </div>
@@ -138,8 +138,8 @@
                             <div> <img src="{{ asset('bundles/mainabstract/img/slide2.jpg') }}"> </div>
                         </div>
                     </div>
-                    <a class="blue-btn text-center col-lg-6 col-md-6 col-sm-12 col-xs-12" href="projects.html">
-                        view more projects</a>
+                    <a class="blue-btn text-center col-lg-6 col-md-6 col-sm-12 col-xs-12" href="{{ path('projects') }}">
+                        {{ 'View more projects'|trans }}</a>
                 </div>
                 <!--projects-->
             {% endblock %}

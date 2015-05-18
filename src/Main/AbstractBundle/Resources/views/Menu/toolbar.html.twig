@@ -1,12 +1,12 @@
 <div class="toolbar-menu">
     <ul class="toolbar-home float-left">
-        <li><a href="{{ path('articles') }}">Articles</a></li>
-        <li><a href="{{ path('contacts') }}">Contacts</a></li>
-        <li><a href="{{ path('menu') }}">Menu Links</a></li>
-        <li><a href="{{ path('departments') }}">Departments</a></li>
-        <li><a href="{{ path('fos_user_registration_register') }}">Add new reporter</a></li>
+        <li><a href="{{ path('articles') }}">{{ 'Articles'| trans }}</a></li>
+        <li><a href="{{ path('contacts') }}">{{ 'Contacts'| trans }}</a></li>
+        <li><a href="{{ path('menu') }}">{{ 'Menu Links'| trans }}</a></li>
+        <li><a href="{{ path('departments') }}">{{ 'Departments'| trans }}</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}">{{ 'Add New Reporter'| trans }}</a></li>
     </ul>
-        <div class="user-login float-right">{{ 'Hello '|trans }}
+        <div class="user-login float-right">{{ 'Hello'|trans }} 
             <a href="{{ path('fos_user_profile_show')}}">{{ app.user.username }}</a>!
             
             <a href="{{ path('fos_user_security_logout') }}">{{ 'Logout'|trans}}</a>

@@ -8,7 +8,7 @@
         <h2 class="text-center">contact</h2>
         <p class="text-center" style="margin:30px 0;">{{ form_errors(form) }}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
         <div id="form">
-            <form class="clearfix" action="{{ path('contacts_create') }}" method="post" >
+            <form id="contact" class="text" action="{{ path('contacts_create') }}" method="post" >
                 {{ form_row(form._token) }}
                 <div class="col-md-6 col-lg-6 form-group">
                     {{ form_widget(form.name, { 'type': 'text', 'attr': {'placeholder': 'name', 'class': 'form-control', 'id': 'name'} }) }}

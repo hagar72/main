@@ -50,7 +50,7 @@ class ArticleController extends Controller
 
         if ($form->isValid()) {
             $entity->processFile();
-            
+            $entity->setCreated(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -193,7 +193,7 @@ class ArticleController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-            $image = $entity->getImage();
+            $entity->setUpdated(new \DateTime());
             
             $entity->processFile();
             $em->flush();

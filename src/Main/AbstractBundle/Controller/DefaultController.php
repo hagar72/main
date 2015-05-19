@@ -17,7 +17,11 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $locale = $this->get('request')->getLocale();
         $language = $em->getRepository('MainAbstractBundle:Language')->findOneBy(array('alias' => $locale));
-        $articles = $em->getRepository('MainArticleBundle:Article')->findBy(array('language' => $language->getId()));
+        $articles = $em->getRepository('MainArticleBundle:Article')->findBy(
+                array('language' => $language->getId()), 
+                array('id' => 'DESC'),
+                /* limit */ 10
+            );
         
         return array(
             'articles' => $articles,

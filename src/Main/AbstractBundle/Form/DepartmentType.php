@@ -16,7 +16,7 @@ class DepartmentType extends AbstractType
     {
         $builder
             ->add('department')
-            ->add('emails')
+            ->add('emails', 'textarea')
         ;
     }
     

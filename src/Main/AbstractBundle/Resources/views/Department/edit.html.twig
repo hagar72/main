@@ -5,16 +5,35 @@
 {% block projects %}{% endblock %}
 {% block container %}
     {{ parent() }}
-    <h1>Department edit</h1>
 
-    {{ form(edit_form) }}
+    <div class="container">
+        <h2 class="text-center">Department edit</h2>
+        <p class="text-center" style="margin:30px 0;">{{ form_errors(edit_form) }}</p>
+        <div id="form">
+            {{ form_start(edit_form, {'attr': { 'id': 'contact'} }) }}
+
+            <div class="col-md-6 col-lg-12 form-group">
+                {{ form_widget(edit_form.department, { 'type': 'text', 'attr': {'placeholder': 'Department', 'class': 'form-control', 'id': 'department'} }) }}
+            </div>
+
+            <div class="col-md-6 col-lg-12 form-group">
+                {{ form_widget(edit_form.emails, { 'type': 'text', 'attr': {'placeholder': 'Emails', 'class': 'form-control', 'id': 'emails'} }) }}
+                <span style='color:#555;'><i>Enter emails seperated by ;</i></span>
+            </div>
+
+            <div class="col-md-12">
+                <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">Create</button>
+            </div>
+
+        </div>
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('departments') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+            <li>
+                <a href="{{ path('departments') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+    </div>
+    {% endblock %}

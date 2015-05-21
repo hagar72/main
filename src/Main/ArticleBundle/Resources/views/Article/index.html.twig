@@ -9,6 +9,7 @@
     {{ parent() }}
     <div class="container">
         <h2 class="text-center">Article list</h2>
+        <div id="form">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -33,14 +34,9 @@
                         <td class="middle">{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('articles_show', { 'id': entity.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('articles_edit', { 'id': entity.id }) }}">edit</a>
-                            </li>
-                        </ul>
+                            <a href="{{ path('articles_show', { 'id': entity.id }) }}">show</a>
+                            <br/>
+                            <a href="{{ path('articles_edit', { 'id': entity.id }) }}">edit</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -48,7 +44,7 @@
         </table>
     </div>
     <a class="blue-btn text-center button btn-block" href="{{ path('articles_new') }}">Create a new entry</a>
-
+</div>
 
 {% endblock %}
 {% block homeSlider %}{% endblock %}

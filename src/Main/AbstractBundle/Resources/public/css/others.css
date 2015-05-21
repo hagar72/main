@@ -37,3 +37,15 @@
     color: #DC143C;
     background-color: #FFE4E1;
 }
+.select-list {
+    width: 540px;
+    border: 1px #ccc solid;
+    height: 60px;
+    font-size: 20px;
+    font-weight: 300;
+    border-radius: 0;
+    text-transform: capitalize;
+    background: none;
+    color: grey;
+    padding: 6px;
+}

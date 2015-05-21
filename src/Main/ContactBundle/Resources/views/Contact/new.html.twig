@@ -17,8 +17,8 @@
                     {{ form_widget(form.sender, { 'type': 'email', 'attr': {'placeholder': 'Yout E-mail', 'class': 'form-control', 'id': 'email'} }) }}
                 </div>
                 <div class="btn-group btn-input clearfix col-md-6">
-                    <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"> <span data-bind="label">Select One</span>&nbsp;<span class="caret"></span> </button>
-                    {{ form_widget(form.department, { 'type': 'email', 'attr': {'class': 'dropdown-menu', 'role': 'menu'} }) }}
+                    
+                    {{ form_widget(form.department, { 'type': 'email', 'attr': {'class': 'select-list', 'role': 'menu'} }) }}
                 </div>
                 <div class="col-md-6 col-lg-6 form-group">
                     {{ form_widget(form.subject, { 'type': 'text', 'attr': {'placeholder': 'Subject', 'class': 'form-control', 'id': 'subject'} }) }}
@@ -32,7 +32,6 @@
             </form>
             <!--contact-form--> 
         </div>
-        <a href="{{ path('contacts') }}">Back to the list</a>
         <div class="contact-details clearfix">
             <div class="col-md-4 col-sm-12 col-xs-12 text-center">
                 <h5>general manager</h5>

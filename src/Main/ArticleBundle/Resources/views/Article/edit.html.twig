@@ -12,7 +12,7 @@
         <h2 class="text-center">Article Edit</h2>
         <p class="text-center" style="margin:30px 0;">{{ form_errors(edit_form) }}</p>
         <div id="form">
-            {{ form_start(edit_form, {'class': 'clearfix'}) }}
+            {{ form_start(edit_form, {'attr': { 'id': 'contact', 'class': 'clearfix'} }) }}
             
                 {{ form_row(edit_form._token) }}
                 <div class="col-md-6 col-lg-12 form-group">

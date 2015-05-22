@@ -23,16 +23,15 @@
                 </div>
                 <div class="form-group">
                     <input type="checkbox" id="remember_me" name="_remember_me"  class="float-left" value="on" />
-                    <label for="remember_me"  class="float-left">{{ 'security.login.remember_me'|trans }}</label>
+                    <label for="remember_me" class="remember_me"  class="float-left">{{ 'security.login.remember_me'|trans }}</label>
                 </div>
-
+                <div class="col-md-12">
+                    <button  id="_submit" name="_submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">{{ 'security.login.submit'|trans }}</button>
+                    <a href="{{ path('fos_user_resetting_request') }}">{{'Forgot password?'|trans}}</a>
+                </div>
+            </form>
         </div>
-        <div class="col-md-12">
-            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-            <a href="{{ path('fos_user_resetting_request') }}">{{'Forgot password?'|trans}}</a>
-        </div>
-    </form>
     <!--contact-form--> 
-</div>
+    </div>
 </div><!--Container-->
 {% endblock fos_user_content %}

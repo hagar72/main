@@ -35,10 +35,16 @@ security:
         - { path: ^/register, role: ROLE_USER }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
+        - { path: ^/departments, role: ROLE_USER }
+        
+        - { path: ^/contacts/$, role: ROLE_USER }
+        - { path: ^/contacts/.*/edit, role: ROLE_USER }
+        - { path: ^/contacts/delete, role: ROLE_USER }
+        
+        - { path: ^/articles/$, role: ROLE_USER }
         - { path: ^/articles/new, role: ROLE_USER }
         - { path: ^/articles/.*/edit, role: ROLE_USER }
         - { path: ^/articles/delete, role: ROLE_USER }
         
-        - { path: ^/contacts/.*/edit, role: ROLE_USER }
-        - { path: ^/articles/delete, role: ROLE_USER }
-        - { path: ^/articles/show, role: ROLE_USER }
+        
+        

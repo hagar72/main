@@ -48,28 +48,31 @@ class ContactController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject($entity->getSubject())
-            ->setFrom($entity->getSender())
-            ->setTo($entity->getDepartment()->getEmails())
-            ->setBody($entity->getMessage()
-//                $this->renderView(
-//                    // app/Resources/views/Emails/registration.html.twig
-//                    'Emails/registration.html.twig',
-//                    array('name' => $name)
-//                ),
-//                'text/html'
-            )
-        ;
-        $sent = $this->get('mailer')->send($message);
-    
-        $entity->setSent($sent);
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        if($form->isValid()) {
+            $message = \Swift_Message::newInstance()
+                ->setSubject($entity->getSubject())
+                ->setFrom($entity->getSender())
+                ->setTo($entity->getDepartment()->getEmails())
+                ->setBody($entity->getMessage()
+    //                $this->renderView(
+    //                    // app/Resources/views/Emails/registration.html.twig
+    //                    'Emails/registration.html.twig',
+    //                    array('name' => $name)
+    //                ),
+    //                'text/html'
+                )
+            ;
+            
+            $sent = $this->get('mailer')->send($message);
 
-            return $this->redirect($this->generateUrl('contacts_show', array('id' => $entity->getId())));
+            $entity->setSent($sent);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('contacts_show', array('id' => $entity->getId())));
+            }
         }
 
         return array(

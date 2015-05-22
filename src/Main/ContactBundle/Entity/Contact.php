@@ -3,6 +3,7 @@
 namespace Main\ContactBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Contact
@@ -25,6 +26,11 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="sender", type="string", length=225, nullable=false)
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
+     * @Assert\NotBlank()
      */
     private $sender;
 
@@ -32,6 +38,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=225, nullable=false)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -39,6 +46,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="subject", type="string", length=225, nullable=false)
+     * @Assert\NotBlank()
      */
     private $subject;
 
@@ -46,6 +54,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="message", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     private $message;
 
@@ -56,6 +65,7 @@ class Contact
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="department_id", referencedColumnName="id")
      * })
+     * @Assert\NotBlank()
      */
     private $department;
 
@@ -63,6 +73,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="sent", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $sent;
 

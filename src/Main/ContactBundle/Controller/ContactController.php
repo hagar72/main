@@ -144,33 +144,6 @@ class ContactController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Contact entity.
-     *
-     * @Route("/{id}/edit", name="contacts_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainContactBundle:Contact')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Contact entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
     * Creates a form to edit a Contact entity.
     *
     * @param Contact $entity The entity
@@ -188,39 +161,7 @@ class ContactController extends Controller
 
         return $form;
     }
-    /**
-     * Edits an existing Contact entity.
-     *
-     * @Route("/{id}", name="contacts_update")
-     * @Method("PUT")
-     * @Template("MainContactBundle:Contact:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainContactBundle:Contact')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Contact entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('contacts_edit', array('id' => $id)));
-        }
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
+    
     /**
      * Deletes a Contact entity.
      *

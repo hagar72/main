@@ -110,3 +110,110 @@
 {% block homeSlider %}{% endblock %}
 {% block single_item %}{% endblock %}
 {% block projects %}{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+    <!--JS FOR SLICK SLIDERS-->
+    <script src="{{ asset('bundles/mainabstract/js/jquery.mixitup.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/mainabstract/js/classie.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/mainabstract/js/pgwslideshow.min.js') }}" type="text/javascript"></script>
+    <!--Gallery-->
+    <script>
+        $(document).ready(function() {
+            $('.pgwSlideshow').pgwSlideshow();
+        });
+    </script>
+    <!--Header--> 
+    <script>
+        function init() {
+            window.addEventListener('scroll', function(e) {
+                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                        shrinkOn = 300,
+                        header = document.querySelector("header");
+                if (distanceY > shrinkOn) {
+                    classie.add(header, "smaller");
+                } else {
+                    if (classie.has(header, "smaller")) {
+                        classie.remove(header, "smaller");
+                    }
+                }
+            });
+        }
+        window.onload = init();
+    </script> 
+    <!--FILTER--> 
+    <script>
+        $(function() {
+            'use strict';
+            $('#filter-controls').mixItUp();
+        });
+    </script> 
+    <script type="text/javascript">
+        $(function() {
+            'use strict';
+            $('#filter-controls').mixItUp();
+        });
+    </script> 
+    <!--DIV TOGGLE--> 
+    <script type="text/javascript">
+        //Function for show or hide portfolio description.
+        $.fn.showHide = function(options) {
+            var defaults = {
+                speed: 1000,
+                easing: '',
+                changeText: 0,
+                showText: 'Show',
+                hideText: 'Hide'
+            };
+            var options = $.extend(defaults, options);
+            $(this).click(function() {
+                $('.pgwSlideshow').resize();
+                $('.toggleDiv').slideUp(options.speed, options.easing);
+                var toggleClick = $(this);
+                var toggleDiv = $(this).attr('rel');
+                $(toggleDiv).slideToggle(options.speed, options.easing, function() {
+                    if (options.changeText == 1) {
+                        $(toggleDiv).is(":visible") ? toggleClick.text(options.hideText) : toggleClick.text(options.showText);
+                    }
+                });
+                return false;
+            });
+        };
+
+        //Initial Show/Hide portfolio element.
+        $('div.toggleDiv').hide();
+        $('.show_hide').showHide({
+            speed: 500,
+            changeText: 0,
+            showText: 'View',
+            hideText: 'Close'
+        });
+
+        $('.nav.nav-pills a').click(function() {
+            $('.toggleDiv').stop(true, true).slideUp();
+        });
+
+    </script>
+    <!--SCROLL TO TOP--> 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('a[href*=#]').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                        && location.hostname == this.hostname) {
+                    var $target = $(this.hash);
+                    $target = $target.length && $target
+                            || $('[name=' + this.hash.slice(1) + ']');
+                    if ($target.length) {
+                        var targetOffset = $target.offset().top;
+                        $('html,body')
+                                .animate({scrollTop: targetOffset}, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+
+
+    </script>
+{% endblock %}

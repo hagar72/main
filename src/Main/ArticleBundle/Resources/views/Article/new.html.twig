@@ -16,19 +16,22 @@
             {{ form_start(form, {'attr': { 'id': 'contact', 'class': 'clearfix'} }) }}
                 {{ form_row(form._token) }}
                 <div class="col-md-6 col-lg-12 form-group">
+                    <div class="error">{{ form_errors(form.title) }}</div>
                     {{ form_widget(form.title, { 'type': 'text', 'attr': {'placeholder': 'Title', 'class': 'form-control', 'id': 'title'} }) }}
                 </div>
                 <div class="col-md-6 col-lg-12 form-group">
-                    {{ form_widget(form.content, { 'type': 'email', 'attr': {'placeholder': 'Content', 'class': 'form-control', 'id': 'content', 'rows': '8'} }) }}
+                    <div class="error">{{ form_errors(form.content) }}</div>
+                    {{ form_widget(form.content, { 'attr': {'placeholder': 'Content', 'class': 'form-control', 'id': 'content', 'rows': '8'} }) }}
                 </div>
                 <div class="col-md-6 col-lg-6 form-group">
+                    <div class="error">{{ form_errors(form.image) }}</div>
                     {{ form_widget(form.image, { 'attr': {'class': 'dropdown-menu', 'role': 'menu'} }) }}
                 </div>
                 <div class="col-md-6 col-lg-6 form-group">
-                    <button type="button" class="btn btn-default dropdown-toggle form-control" data-toggle="dropdown"> 
-                        <span data-bind="label">Select Language</span>&nbsp;<span class="caret"></span> </button>
-                    {{ form_widget(form.language, {  'attr': {'class': 'dropdown-menu', 'role': 'menu'} }) }}
+                    <div class="error">{{ form_errors(form.language) }}</div>
+                    {{ form_widget(form.language, {  'attr': {'class': 'select-list'} }) }}
                 </div>
+                <br/>
                 <div class="col-md-12">
                     <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">Create</button>
                 </div>

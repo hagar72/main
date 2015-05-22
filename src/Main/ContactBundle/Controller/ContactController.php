@@ -47,24 +47,27 @@ class ContactController extends Controller
         $entity = new Contact();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+        
         if($form->isValid()) {
-            $message = \Swift_Message::newInstance()
-                ->setSubject($entity->getSubject())
-                ->setFrom($entity->getSender())
-                ->setTo($entity->getDepartment()->getEmails())
-                ->setBody($entity->getMessage()
-    //                $this->renderView(
-    //                    // app/Resources/views/Emails/registration.html.twig
-    //                    'Emails/registration.html.twig',
-    //                    array('name' => $name)
-    //                ),
-    //                'text/html'
-                )
-            ;
-            
-            $sent = $this->get('mailer')->send($message);
+            $departmentMails = explode(';', $entity->getDepartment()->getEmails());
+            foreach ($departmentMails as $departmentMail) {
+                $message = \Swift_Message::newInstance()
+                    ->setSubject($entity->getSubject())
+                    ->setFrom($entity->getSender())
+                    ->setTo($departmentMail)
+                    ->setBody($entity->getMessage()
+        //                $this->renderView(
+        //                    // app/Resources/views/Emails/registration.html.twig
+        //                    'Emails/registration.html.twig',
+        //                    array('name' => $name)
+        //                ),
+        //                'text/html'
+                    )
+                ;
 
+                $sent = $this->get('mailer')->send($message);
+
+            }
             $entity->setSent($sent);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();

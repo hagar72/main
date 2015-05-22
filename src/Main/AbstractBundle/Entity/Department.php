@@ -3,6 +3,7 @@
 namespace Main\AbstractBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Department
@@ -25,6 +26,7 @@ class Department
      * @var string
      *
      * @ORM\Column(name="department", type="string", length=225, nullable=false)
+     * @Assert\NotBlank()
      */
     private $department;
 
@@ -32,6 +34,7 @@ class Department
      * @var string
      *
      * @ORM\Column(name="emails", type="string", length=500, nullable=false)
+     * @Assert\NotBlank()
      */
     private $emails;
 

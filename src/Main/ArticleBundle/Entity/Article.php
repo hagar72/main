@@ -31,6 +31,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=225, nullable=false)
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -38,6 +39,7 @@ class Article
      * @var string
      *
      * @ORM\Column(name="content", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     private $content;
 
@@ -70,6 +72,7 @@ class Article
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="language_id", referencedColumnName="id")
      * })
+     * @Assert\NotBlank()
      */
     private $language;
 

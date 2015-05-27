@@ -7,18 +7,34 @@
 {% endblock %}
 
 {% block container %}
-<div class="container">
-    {% for article in articles %}
-    <div class="chairman clearfix">
-        <h1 class="text-center">{{ article.title }}</h1>
-        <p class="col-md-8">{{ article.smallContent }}</p>
-        <img class="col-md-4 img-responsive" src="{{ asset(article.webPath) }}" alt="{{ article.image }}" />
-        <div class="col-md-6 pull-left">
-            <a href="{{ path('articles_show', { 'id': article.id }) }}" class="text-center">{{ 'Read More'|trans}}</a>
+    <div class="container">
+        <div class="chairman clearfix">
+            <h1 class="text-center">chairman word</h1>
+            <p class="col-md-8">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem</p>
+            <img class="col-md-4 img-responsive" src="{{ asset('bundles/mainabstract/img/chairman.jpg') }}" alt="Chairman">
+            <div class="col-md-6 pull-left"> <a href="{{ path('about') }}" class="text-center">{{ 'Read More'|trans}}</a> </div>
         </div>
+        <!--chairman--> 
     </div>
-    {% endfor %}
-    <!--chairman--> 
-</div>
-<!--container-->
+    <!--container-->
+{% endblock %}
+
+{% block single_item %}
+    <section class="news text-center clearfix">
+        <div class="container">
+            <h1 class="title">{{ 'Latest News'|trans }}</h1>
+            <div class="slider autoplay single-item">
+                {% for article in articles %}
+                    <div>
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.smallContent }}</p>
+                        {% if article.webPath is not null %}
+                            <img src="{{ asset(article.webPath) }}"> 
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!--single-item-->
 {% endblock %}

@@ -96,26 +96,6 @@
             {% endblock %}
             
             {% block single_item %}
-                <section class="news text-center clearfix">
-                    <div class="container">
-                        <h1 class="title">{{ 'Latest News'|trans }}</h1>
-                        <div class="slider autoplay single-item">
-                            <div>
-                                <h3>There are many variations of passages</h3>
-                                <p>he 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets </p>
-                                <img src="{{ asset('bundles/mainabstract/img/news-img-1.jpg') }}"> </div>
-                            <div>
-                                <h3>There are many variations</h3>
-                                <p>he 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets </p>
-                                <img src="{{ asset('bundles/mainabstract/img/news-img-1.jpg') }}"> </div>
-                            <div>
-                                <h3>There are many variations of passages</h3>
-                                <p>he 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--single-item-->
             {% endblock %}
             
             {% block projects %}
@@ -146,7 +126,20 @@
             
             {% block footer %}
                 <footer class="clearfix">
-                    <div class="container"> <span class="copyrights pull-left col-md-6 col-sm-12 col-xs-12">&copy; Copyright 2015 . All Rights Reserved,Designed By<a href="http://www.tickmarked.com/" class="tickmarked" target="_blank">Tick Marked</a></span> <span class="fb pull-right col-md-6 col-sm-12 col-xs-12"><a href="#"><img src="{{ asset('bundles/mainabstract/img/facebook.png') }}">follow us on facebook</a></span> </div>
+                    <div class="container">
+                        <span class="copyrights pull-left col-md-6 col-sm-12 col-xs-12">
+                            {% if 'en' == app.session.get('_locale') %}
+                                &copy; 
+                            {% endif %}
+                            {{'Copyright 2015 . All Rights Reserved,Designed By'|trans}}
+                            <a href="http://www.tickmarked.com/" class="tickmarked" target="_blank">Tick Marked</a>
+                        </span>
+                        <span class="fb pull-right col-md-6 col-sm-12 col-xs-12">
+                            <a href="#"><img src="{{ asset('bundles/mainabstract/img/facebook.png') }}">
+                            {{'follow us on facebook'|trans}}
+                            </a>
+                        </span> 
+                    </div>
                 </footer>
             {% endblock %}
         </div>

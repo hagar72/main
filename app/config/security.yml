@@ -34,10 +34,11 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: ROLE_USER }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/contacts/create, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
         - { path: ^/departments, role: ROLE_USER }
         
-        - { path: ^/contacts/$, role: ROLE_USER }
+        - { path: ^/contacts/$, role: ROLE_USER, methods: GET }
         - { path: ^/contacts/.*/edit, role: ROLE_USER }
         - { path: ^/contacts/delete, role: ROLE_USER }
         

@@ -6,8 +6,11 @@
 {% block container %}
     {{ parent() }}
     <div class="container">
-        <h2 class="text-center">Department list</h2>
-        <a href="{{ path('departments_new') }}">Create a new entry</a>
+        <h2 class="text-center">{{'Department list'|trans}}</h2>
+        {% for error in app.session.flashbag.get('error_messages') %}
+            <div class="error"><ul><li>{{ error }}</li></ul></div>
+        {% endfor %}
+        <a href="{{ path('departments_new') }}">{{'Create a new entry'|trans}}</a>
         <table class="table table-bordered">
             <thead>
                 <tr>

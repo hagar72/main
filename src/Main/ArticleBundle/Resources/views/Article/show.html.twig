@@ -20,10 +20,12 @@
                 <th>Content</th>
                 <td>{{ entity.content }}</td>
             </tr>
-            <tr>
-                <th>Image</th>
-                <td><img src="{{ asset(entity.webPath) }}" alt="{{ entity.image }}" /></td>
-            </tr>
+            {% if entity.webPath is not null %}
+                <tr>
+                    <th>Image</th>
+                    <td><img src="{{ asset(entity.webPath) }}" alt="{{ entity.image }}" /></td>
+                </tr>
+            {% endif %}
             <tr>
                 <th>Language</th>
                 <td>{{ entity.language.language }}</td>

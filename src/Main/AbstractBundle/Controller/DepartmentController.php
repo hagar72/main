@@ -196,6 +196,15 @@ class DepartmentController extends Controller
                 throw $this->createNotFoundException('Unable to find Department entity.');
             }
 
+            $contacts = $em->getRepository('MainContactBundle:Contact')->findBy(array('department' => $id));
+
+            if(count($contacts) > 0) {
+                $this->getRequest()->getSession()->getFlashBag()->add(
+                    'error_messages', $this->get('translator')->trans('Department has been attached to contacts')
+                );
+                return $this->redirect($this->generateUrl('departments'));
+            }
+
             $em->remove($entity);
             $em->flush();
         }

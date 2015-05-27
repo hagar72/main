@@ -53,7 +53,7 @@ class ContactController extends Controller
             foreach ($departmentMails as $departmentMail) {
                 $message = \Swift_Message::newInstance()
                     ->setSubject($entity->getSubject())
-                    ->setFrom($entity->getSender())
+                    ->setFrom(array($this->container->getParameter('mailer_user') => 'Rayat El-Jazeerah'))
                     ->setTo($departmentMail)
                     ->setBody($entity->getMessage()
         //                $this->renderView(

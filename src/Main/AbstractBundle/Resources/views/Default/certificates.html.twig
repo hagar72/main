@@ -8,7 +8,7 @@
 {% block container %}
     {{ parent() }}
     <div class="container">
-        <h2 class="text-center">certificates</h2>
+        <h2 class="text-center">{{'certificates'|trans}}</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -35,7 +35,7 @@
                 </tr>
             </tbody>
         </table>
-        <a class="blue-btn text-center button btn-block">download all certificates</a>
+        <a class="blue-btn text-center button btn-block">{{'download all certificates'|trans}}</a>
     </div>
 {% endblock %}
 {% block homeSlider %}{% endblock %}

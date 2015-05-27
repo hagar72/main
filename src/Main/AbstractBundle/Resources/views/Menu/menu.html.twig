@@ -19,10 +19,10 @@
                     <li class=""><a href="{{ path('certificates') }}" class="{% if currentPath == 'certificates' %}active{%endif%}">{{ 'Certificates'|trans }}</a></li>
                     <li class=""><a href="{{ path('projects') }}" class="{% if currentPath == 'projects' %}active{%endif%}">{{ 'Projects'|trans }}</a></li>
                     <li class=""><a href="{{ path('contacts_new') }}" class="{% if currentPath == 'contacts_new' %}active{%endif%}">{{ 'Contact us'|trans }}</a></li>
-                    {%if 'en' ==  app.session.get('_locale') %}
-                        <li class="ar-lang"><a class="pull-right" href="{{ path('language_switch', { 'locale': 'ar'}) }}">العربية</a></li>
-                    {% else %}
+                    {%if 'ar' ==  app.session.get('_locale') %}
                         <li class="ar-lang"><a class="pull-right" href="{{ path('language_switch', { 'locale': 'en'}) }}">English</a></li>
+                    {% else %}
+                        <li class="ar-lang"><a class="pull-right" href="{{ path('language_switch', { 'locale': 'ar'}) }}">العربية</a></li>
                     {% endif %}
                 </ul>
             </div>

@@ -8,7 +8,7 @@
 {% block container %}
     {{ parent() }}
     <div class="container">
-        <h2 class="text-center">Contact list</h2>
+        <h2 class="text-center">{{'Contact list'|trans}}</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -29,7 +29,11 @@
                         <td class="middle">{{ entity.sender }}</td>
                         <td class="middle">{{ entity.name }}</td>
                         <td class="middle">{{ entity.message }}</td>
-                        <td class="middle">{{ entity.department.department }}</td>
+                        <td class="middle">
+                            {% if entity.department is not null %}
+                                {{ entity.department.department }}
+                            {% endif %}
+                        </td>
                         <td>{{ (entity.sent)? 'Yes': 'No' }}</td>
                     </tr>
                 {% endfor %}

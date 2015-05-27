@@ -5,18 +5,18 @@
     
     <div class="container">
         
-        <h2 class="text-center">contact</h2>
+        <h2 class="text-center">{{'contact'|trans}}</h2>
         <p class="text-center" style="margin:30px 0;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
         <div id="form">
             <form id="contact" class="text" action="{{ path('contacts_create') }}" method="post" >
                 {{ form_row(form._token) }}
                 <div class="col-md-6 col-lg-6 form-group">
                     <div class="error">{{ form_errors(form.name) }}</div>
-                    {{ form_widget(form.name, { 'type': 'text', 'attr': {'placeholder': 'name', 'class': 'form-control', 'id': 'name'} }) }}
+                    {{ form_widget(form.name, { 'type': 'text', 'attr': {'placeholder': 'Name'|trans, 'class': 'form-control', 'id': 'name'} }) }}
                 </div>
                 <div class="col-md-6 col-lg-6 form-group">
                     <div class="error">{{ form_errors(form.sender) }}</div>
-                    {{ form_widget(form.sender, { 'type': 'email', 'attr': {'placeholder': 'Yout E-mail', 'class': 'form-control', 'id': 'email'} }) }}
+                    {{ form_widget(form.sender, { 'type': 'email', 'attr': {'placeholder': 'Yout E-mail'|trans, 'class': 'form-control', 'id': 'email'} }) }}
                 </div>
                 <div class="btn-group btn-input clearfix col-md-6">
                     <div class="error">{{ form_errors(form.department) }}</div>
@@ -24,14 +24,14 @@
                 </div>
                 <div class="col-md-6 col-lg-6 form-group">
                     <div class="error">{{ form_errors(form.subject) }}</div>
-                    {{ form_widget(form.subject, { 'type': 'text', 'attr': {'placeholder': 'Subject', 'class': 'form-control', 'id': 'subject'} }) }}
+                    {{ form_widget(form.subject, { 'type': 'text', 'attr': {'placeholder': 'Subject'|trans, 'class': 'form-control', 'id': 'subject'} }) }}
                 </div>
                 <div class="col-md-12 form-group">
                     <div class="error">{{ form_errors(form.message) }}</div>
-                    {{ form_widget(form.message, { 'attr': {'placeholder': 'Message', 'class': 'form-control', 'id': 'message', 'rows': '5'} }) }}
+                    {{ form_widget(form.message, { 'attr': {'placeholder': 'Message'|trans, 'class': 'form-control', 'id': 'message', 'rows': '5'} }) }}
                 </div>
                 <div class="col-md-12">
-                    <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">send</button>
+                    <button id="submit" type="submit" class="col-md-12 col-sm-12 col-xs-12 blue-btn">{{'send'|trans}}</button>
                 </div>
             </form>
             <!--contact-form--> 

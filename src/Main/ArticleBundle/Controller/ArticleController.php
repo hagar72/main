@@ -55,7 +55,7 @@ class ArticleController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('articles_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('articles'));
         }
 
         return array(
@@ -198,7 +198,7 @@ class ArticleController extends Controller
             $entity->processFile();
             $em->flush();
 
-            return $this->redirect($this->generateUrl('articles_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('articles'));
         }
 
         return array(
@@ -226,7 +226,10 @@ class ArticleController extends Controller
                 throw $this->createNotFoundException('Unable to find Article entity.');
             }
 
-            unlink($entity->getWebPath());
+            if(null != $entity->getWebPath()) {
+                unlink($entity->getWebPath());
+            }
+            
             $em->remove($entity);
             $em->flush();
         }

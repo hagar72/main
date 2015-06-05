@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <th>Content</th>
-                <td>{{ entity.content }}</td>
+                <td>{{ entity.content|raw }}</td>
             </tr>
             {% if entity.webPath is not null %}
                 <tr>

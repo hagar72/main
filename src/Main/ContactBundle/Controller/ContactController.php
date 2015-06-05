@@ -55,7 +55,10 @@ class ContactController extends Controller
                     ->setSubject($entity->getSubject())
                     ->setFrom(array($this->container->getParameter('mailer_user') => 'Rayat El-Jazeerah'))
                     ->setTo($departmentMail)
-                    ->setBody($entity->getMessage()
+                    ->setBody(
+                            'This email has been sent to you by: ' . $entity->getName() . ', ' . $entity->getSender().
+                            "\n\nMessage Body:\n" .
+                            $entity->getMessage()
         //                $this->renderView(
         //                    // app/Resources/views/Emails/registration.html.twig
         //                    'Emails/registration.html.twig',

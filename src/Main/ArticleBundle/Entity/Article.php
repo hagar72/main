@@ -47,7 +47,12 @@ class Article
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=225, nullable=true)
-     * @Assert\File(maxSize="600000000")
+     * @Assert\File(
+     *     maxSize = "600000000",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *     maxSizeMessage = "The maxmimum allowed file size is 5MB.",
+     *     mimeTypesMessage = "Only the filetypes image are allowed."
+     * )
      */
     private $image;
 
